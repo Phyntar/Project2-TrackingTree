@@ -18,7 +18,13 @@ public:
 	vector<string> getRHisth();
 	vector<string> getLHisth();
 
-
+	void setID(string in);
+	void setParentID(string in);
+	void setRawEvent(string in);
+	void setRhash(string in);
+	void setLhash(string in);
+	void addRhisth(string in);
+	void addLhisth(string in);
 
 private:
 	
