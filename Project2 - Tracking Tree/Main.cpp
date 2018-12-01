@@ -37,7 +37,9 @@ int hashed(string in)
 //insert function below
 //https://www.geeksforgeeks.org/insertion-in-a-binary-tree-in-level-order/
 
-struct Node
+
+struct Node 
+
 {
 	int key;
 	struct Node* left, *right;
@@ -89,4 +91,8 @@ void insert(struct Node* temp, int key)
 		else
 			q.push(temp->right);
 	}
+
 }
+
+//https://www.geeksforgeeks.org/insertion-in-a-binary-tree-in-level-order/
+
