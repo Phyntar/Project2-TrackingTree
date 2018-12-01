@@ -1,6 +1,16 @@
 //TrackingTree.cpp
 
 #include "TrackingTree.h"
+#include <cstdlib>
+
+TrackingTree::TrackingTree(string in)
+{
+	parentID = rand()%1000;
+	rawEvent = in;
+	lHash = "null";
+	rHash = "null";
+	id = 
+}
 
 string TrackingTree::getID()
 {
@@ -57,5 +67,5 @@ void TrackingTree::addRhisth(string in)
 }
 void TrackingTree::addLhisth(string in)
 {
-	lHash.push_back(in);
+	lHisth.push_back(in);
 }

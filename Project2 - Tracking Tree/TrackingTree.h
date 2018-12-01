@@ -9,7 +9,8 @@ using std::vector;
 class TrackingTree
 {
 public:
-	
+
+	TrackingTree(string in);
 	string getID();
 	string getParentID();
 	string getRawEvent();

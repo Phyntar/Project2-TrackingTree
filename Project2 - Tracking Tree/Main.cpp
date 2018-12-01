@@ -6,3 +6,8 @@ int main()
 {
 
 }
+
+int hashed(string in)
+{
+	return 0;
+}
