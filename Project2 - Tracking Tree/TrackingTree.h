@@ -18,7 +18,11 @@ public:
 	string getLHash();
 	vector<string> getRHisth();
 	vector<string> getLHisth();
+	TrackingTree * getLeft();
+	TrackingTree * getRight();
 
+	void setLeft(TrackingTree* in);
+	void setRight(TrackingTree* in);
 	void setID(string in);
 	void setParentID(string in);
 	void setRawEvent(string in);
@@ -40,4 +44,6 @@ private:
 	string lHash;
 	vector<string> rHisth;
 	vector<string> lHisth;
+	TrackingTree * leftChild;
+	TrackingTree * rightChild;
 };

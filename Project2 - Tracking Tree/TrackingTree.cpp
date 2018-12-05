@@ -6,6 +6,8 @@
 
 using std::hash;
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Constructor~~~~~
+
 TrackingTree::TrackingTree(string in)
 {
 	parentID = rand()%1000;
@@ -15,6 +17,8 @@ TrackingTree::TrackingTree(string in)
 	id = "null";
 
 }
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Get Functions~~~~~
 
 string TrackingTree::getID()
 {
@@ -43,6 +47,26 @@ vector<string> TrackingTree::getRHisth()
 vector<string> TrackingTree::getLHisth()
 {
 	return lHisth;
+}
+
+TrackingTree * TrackingTree::getLeft()
+{
+	return leftChild;
+}
+TrackingTree * TrackingTree::getRight()
+{
+	return rightChild;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Set Functions~~~~~
+
+void TrackingTree::setLeft(TrackingTree* in)
+{
+	leftChild = in;
+}
+void TrackingTree::setRight(TrackingTree* in)
+{
+	rightChild = in;
 }
 
 void TrackingTree::setID(string in)
@@ -74,6 +98,7 @@ void TrackingTree::addLhisth(string in)
 	lHisth.push_back(in);
 }
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Display Functions~~~~~
 
 void TrackingTree::display(std::ostream& outfile)
 {
@@ -84,9 +109,9 @@ void TrackingTree::display(std::ostream& outfile)
 	}
 	else
 	{
-		displayLeft(outfile, tree_->left_, "    ");
-		outfile << "---" << tree_->entry_ << std::endl;
-		displayRight(outfile, tree_->right_, "    ");
+		displayLeft(outfile, getLeft(), "    ");
+		outfile << "---" << getID() << std::endl;
+		displayRight(outfile, getRight(), "    ");
 	}
 }
 
@@ -98,9 +123,9 @@ void TrackingTree::displayLeft(std::ostream & outfile, TrackingTree * subtree, s
 	}
 	else
 	{
-		displayLeft(outfile, subtree->left_, prefix + "     ");
+		displayLeft(outfile, subtree->getLeft(), prefix + "     ");
 		outfile << prefix + "/---" << subtree->getID() << std::endl;
-		displayRight(outfile, subtree->right_, prefix + "|    ");
+		displayRight(outfile, subtree->getRight(), prefix + "|    ");
 	}
 }
 
@@ -112,8 +137,8 @@ void TrackingTree::displayRight(std::ostream & outfile, TrackingTree * subtree, 
 	}
 	else
 	{
-		displayLeft(outfile, subtree->left_, prefix + "|    ");
+		displayLeft(outfile, subtree->getLeft(), prefix + "|    ");
 		outfile << prefix + "\\---" << subtree->getID() << std::endl;
-		displayRight(outfile, subtree->right_, prefix + "     ");
+		displayRight(outfile, subtree->getRight(), prefix + "     ");
 	}
 }
