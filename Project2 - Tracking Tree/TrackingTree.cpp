@@ -2,6 +2,8 @@
 
 #include "TrackingTree.h"
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Get Functions~~~~
+
 string TrackingTree::getID()
 {
 	return id;
@@ -30,6 +32,26 @@ vector<string> TrackingTree::getLHisth()
 {
 	return lHisth;
 }
+TrackingTree* TrackingTree::getLeft()
+{
+	return leftChild;
+}
+
+TrackingTree* TrackingTree::getRight()
+{
+	return rightChild;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Set Functions~~~~
+
+void TrackingTree::setLeft(TrackingTree* in)
+{
+	leftChild = in;
+}
+void TrackingTree::setRight(TrackingTree* in)
+{
+	rightChild = in;
+}
 
 void TrackingTree::setID(string in)
 {
@@ -57,5 +79,5 @@ void TrackingTree::addRhisth(string in)
 }
 void TrackingTree::addLhisth(string in)
 {
-	lHash.push_back(in);
+	lHisth.push_back(in);
 }
