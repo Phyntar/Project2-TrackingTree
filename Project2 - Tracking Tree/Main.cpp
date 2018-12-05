@@ -1,26 +1,18 @@
 //Main.cpp
 
+#include <iostream>
 #include "TrackingTree.h"
 
+using std::cout;
 int main()
 {
-	struct Node* root = newNode(10);
-	root->left = newNode(11);
-	root->left->left = newNode(7);
-	root->right = newNode(9);
-	root->right->left = newNode(15);
-	root->right->right = newNode(8);
+	
 
-	cout << "Inorder traversal before insertion:";
-	inorder(root);
-
-	int key = 12;
-	insert(root, key);
-
-	cout << endl;
-	cout << "Inorder traversal after insertion:";
-	inorder(root);
-
+	TrackingTree* tree = new TrackingTree("10");
+	tree->setLeft(new TrackingTree("7"));
+	tree->setRight(new TrackingTree("6"));
+	tree->display();
+	system("pause");
 	return 0;
 }
 
@@ -32,7 +24,7 @@ int hashed(string in)
 
 
 
-
+/*
 
 //insert function below
 //https://www.geeksforgeeks.org/insertion-in-a-binary-tree-in-level-order/
@@ -54,7 +46,7 @@ struct Node* newNode(int key)
 	return temp;
 };
 
-/* Inorder traversal of a binary tree*/
+// Inorder traversal of a binary tree
 void inorder(struct Node* temp)
 {
 	if (!temp)
@@ -65,7 +57,7 @@ void inorder(struct Node* temp)
 	inorder(temp->right);
 }
 
-/*function to insert element in binary tree */
+//function to insert element in binary tree
 void insert(struct Node* temp, int key)
 {
 	queue<struct Node*> q;
@@ -96,3 +88,4 @@ void insert(struct Node* temp, int key)
 
 //https://www.geeksforgeeks.org/insertion-in-a-binary-tree-in-level-order/
 
+*/

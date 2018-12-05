@@ -31,9 +31,9 @@ public:
 	void addRhisth(string in);
 	void addLhisth(string in);
 
-	void display(std::ostream& outfile);
-	void displayLeft(std::ostream & outfile, TrackingTree * subtree, std::string prefix);
-	void displayRight(std::ostream & outfile, TrackingTree * subtree, std::string prefix);
+	void display();
+	void displayLeft(TrackingTree * subtree, std::string prefix);
+	void displayRight(TrackingTree * subtree, std::string prefix);
 
 private:
 	

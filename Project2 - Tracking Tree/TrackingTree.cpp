@@ -3,7 +3,9 @@
 
 #include "TrackingTree.h"
 #include <cstdlib>
+#include <iostream>
 
+using std::cout;
 using std::hash;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Constructor~~~~~
@@ -14,7 +16,9 @@ TrackingTree::TrackingTree(string in)
 	rawEvent = in;
 	lHash = "null";
 	rHash = "null";
-	id = "null";
+	id = in;
+	leftChild = NULL;
+	rightChild = NULL;
 
 }
 
@@ -100,45 +104,45 @@ void TrackingTree::addLhisth(string in)
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Display Functions~~~~~
 
-void TrackingTree::display(std::ostream& outfile)
+void TrackingTree::display()
 {
 	std::string prefix;
 	if (id == "null")
 	{
-		outfile << "-" << std::endl;
+		cout << "-" << std::endl;
 	}
 	else
 	{
-		displayLeft(outfile, getLeft(), "    ");
-		outfile << "---" << getID() << std::endl;
-		displayRight(outfile, getRight(), "    ");
+		displayLeft(getLeft(), "    ");
+		cout << "---" << getID() << std::endl;
+		displayRight(getRight(), "    ");
 	}
 }
 
-void TrackingTree::displayLeft(std::ostream & outfile, TrackingTree * subtree, std::string prefix)
+void TrackingTree::displayLeft(TrackingTree * subtree, std::string prefix)
 {
 	if (subtree == NULL)
 	{
-		outfile << prefix + "/" << std::endl;
+		cout<< prefix + "/" << std::endl;
 	}
 	else
 	{
-		displayLeft(outfile, subtree->getLeft(), prefix + "     ");
-		outfile << prefix + "/---" << subtree->getID() << std::endl;
-		displayRight(outfile, subtree->getRight(), prefix + "|    ");
+		displayLeft(subtree->getLeft(), prefix + "     ");
+		cout<< prefix + "/---" << subtree->getID() << std::endl;
+		displayRight(subtree->getRight(), prefix + "|    ");
 	}
 }
 
-void TrackingTree::displayRight(std::ostream & outfile, TrackingTree * subtree, std::string prefix)
+void TrackingTree::displayRight(TrackingTree * subtree, std::string prefix)
 {
 	if (subtree == NULL)
 	{
-		outfile << prefix + "\\" << std::endl;
+		cout << prefix + "\\" << std::endl;
 	}
 	else
 	{
-		displayLeft(outfile, subtree->getLeft(), prefix + "|    ");
-		outfile << prefix + "\\---" << subtree->getID() << std::endl;
-		displayRight(outfile, subtree->getRight(), prefix + "     ");
+		displayLeft(subtree->getLeft(), prefix + "|    ");
+		cout << prefix + "\\---" << subtree->getID() << std::endl;
+		displayRight(subtree->getRight(), prefix + "     ");
 	}
 }
