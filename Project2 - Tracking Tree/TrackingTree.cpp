@@ -8,17 +8,19 @@
 using std::cout;
 using std::hash;
 
+char* gen_random(const int len);
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Constructor~~~~~
 
 TrackingTree::TrackingTree(string in)
 {
-	parentID = rand()%1000;
+	parentID = gen_random(8);
 	rawEvent = in;
 	lHash = "null";
 	rHash = "null";
-	id = in;
+	id = getParentID() + in;
+	id.resize(8);
 	leftChild = NULL;
-	rightChild = NULL;
+	rightChild = NULL;	
 
 }
 
@@ -113,9 +115,9 @@ void TrackingTree::display()
 	}
 	else
 	{
-		displayLeft(getLeft(), "    ");
-		cout << "---" << getID() << std::endl;
-		displayRight(getRight(), "    ");
+		displayLeft(getLeft(), "      ");
+		cout << "-----" << getID() << std::endl;
+		displayRight(getRight(), "      ");
 	}
 }
 
@@ -127,9 +129,9 @@ void TrackingTree::displayLeft(TrackingTree * subtree, std::string prefix)
 	}
 	else
 	{
-		displayLeft(subtree->getLeft(), prefix + "     ");
-		cout<< prefix + "/---" << subtree->getID() << std::endl;
-		displayRight(subtree->getRight(), prefix + "|    ");
+		displayLeft(subtree->getLeft(), prefix + "       ");
+		cout<< prefix + "/-----" << subtree->getID() << std::endl;
+		displayRight(subtree->getRight(), prefix + "|      ");
 	}
 }
 
@@ -141,8 +143,8 @@ void TrackingTree::displayRight(TrackingTree * subtree, std::string prefix)
 	}
 	else
 	{
-		displayLeft(subtree->getLeft(), prefix + "|    ");
-		cout << prefix + "\\---" << subtree->getID() << std::endl;
-		displayRight(subtree->getRight(), prefix + "     ");
+		displayLeft(subtree->getLeft(), prefix + "|      ");
+		cout << prefix + "\\-----" << subtree->getID() << std::endl;
+		displayRight(subtree->getRight(), prefix + "       ");
 	}
 }

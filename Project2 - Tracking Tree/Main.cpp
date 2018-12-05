@@ -2,26 +2,54 @@
 
 #include <iostream>
 #include "TrackingTree.h"
+#include <unordered_map>
 
+using std::hash;
 using std::cout;
+using std::cin;
+
+
 int main()
 {
 	
-
 	TrackingTree* tree = new TrackingTree("10");
 	tree->setLeft(new TrackingTree("7"));
+	
+	tree->getLeft()->setLeft(new TrackingTree("5"));
+	tree->getLeft()->setRight(new TrackingTree("4"));
+
+	tree->getLeft()->getLeft()->setLeft(new TrackingTree("1"));
+	tree->getLeft()->getLeft()->setRight(new TrackingTree("fu"));
+
 	tree->setRight(new TrackingTree("6"));
+
+	tree->getRight()->setLeft(new TrackingTree("3"));
+	tree->getRight()->setRight(new TrackingTree("2"));
+
 	tree->display();
+
+	
+
 	system("pause");
 	return 0;
 }
 
-int hashed(string in)
+char* gen_random(const int len)
 {
-	return 0;
+	char* s = new char;
+	static const char alphanum[] =
+		"0123456789"
+		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+		"abcdefghijklmnopqrstuvwxyz";
+
+	for (int i = 0; i < len; ++i) {
+		s[i] = alphanum[rand() % (sizeof(alphanum) - 1)];
+	}
+
+	s[len] = 0;
+
+	return s;
 }
-
-
 
 
 /*

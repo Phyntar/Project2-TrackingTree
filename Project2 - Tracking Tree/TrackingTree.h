@@ -6,6 +6,7 @@
 
 using std::string;
 using std::vector;
+using std::hash;
 class TrackingTree
 {
 public:
@@ -46,4 +47,5 @@ private:
 	vector<string> lHisth;
 	TrackingTree * leftChild;
 	TrackingTree * rightChild;
+	hash<string> hasher;
 };
