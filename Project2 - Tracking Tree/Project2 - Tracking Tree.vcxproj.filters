@@ -21,9 +21,15 @@
     <ClCompile Include="TTnode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TrackingTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TTnode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TrackingTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

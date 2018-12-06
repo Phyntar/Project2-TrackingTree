@@ -1,6 +1,7 @@
 //Main.cpp
 
 #include <iostream>
+#include "TTnode.h"
 #include "TrackingTree.h"
 #include <unordered_map>
 
@@ -11,25 +12,18 @@ using std::cin;
 
 int main()
 {
-	
-	TrackingTree* tree = new TrackingTree("10");
-	tree->setLeft(new TrackingTree("7"));
-	
-	tree->getLeft()->setLeft(new TrackingTree("5"));
-	tree->getLeft()->setRight(new TrackingTree("4"));
-
-	tree->getLeft()->getLeft()->setLeft(new TrackingTree("1"));
-	tree->getLeft()->getLeft()->setRight(new TrackingTree("fu"));
-
-	tree->setRight(new TrackingTree("6"));
-
-	tree->getRight()->setLeft(new TrackingTree("3"));
-	tree->getRight()->setRight(new TrackingTree("2"));
-
-	tree->display();
+	TrackingTree * treeMaster = new TrackingTree();
 
 	
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->getTree()->display();
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->getTree()->display();
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->getTree()->display();
 
+	
+	
 	system("pause");
 	return 0;
 }
