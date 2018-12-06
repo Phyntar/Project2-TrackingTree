@@ -17,11 +17,43 @@ int main()
 	
 	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
 	treeMaster->getTree()->display();
+	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
 	treeMaster->getTree()->display();
+	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
 	treeMaster->getTree()->display();
-
+	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->getTree()->display();
+	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->getTree()->display();
+	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->getTree()->display();
+	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->getTree()->display();
+	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->getTree()->display();
+	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->getTree()->display();
+	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->getTree()->display();
+	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->getTree()->display();
+	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->getTree()->display();
+	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->getTree()->display();
+	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	
 	
 	system("pause");

@@ -5,7 +5,7 @@
 
 TrackingTree::TrackingTree()
 {
-	tree = new TTnode("9");
+	tree = NULL;
 }
 
 TTnode* TrackingTree::getTree()
@@ -22,7 +22,7 @@ int TrackingTree::insertNode(TTnode* cur,TTnode* in)
 {
 	if (cur == NULL)
 	{
-		cur = in;
+		setTree(in);
 		return 0;
 	}
 	else if (cur->getLeft() == NULL)
@@ -44,7 +44,21 @@ int TrackingTree::insertNode(TTnode* cur,TTnode* in)
 		}
 		else
 		{
-			insertNode(cur->getLeft(), in);
+			if (!isFull(cur->getLeft()))
+			{
+				insertNode(cur->getLeft(), in);
+			}
+			else
+			{
+				if (height(cur->getLeft()) == height(cur->getRight()))
+				{
+					insertNode(cur->getLeft(), in);
+				}
+				else
+				{
+					insertNode(cur->getRight(), in);
+				}
+			}
 			return 0;
 		}
 	}
@@ -67,4 +81,26 @@ bool TrackingTree::isFull(TTnode* in)
 	}
 
 	return false;
+}
+
+int TrackingTree::height(TTnode * in)
+{
+	if (in == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		int lheight = height(in->getLeft());
+		int rheight = height(in->getRight());
+
+		if (lheight > rheight)
+		{
+			return lheight + 1;
+		}
+		else
+		{
+			return rheight + 1;
+		}
+	}
 }

@@ -16,6 +16,7 @@ public:
 
 	int insertNode(TTnode* cur,TTnode* in);
 	bool isFull(TTnode* in);
+	int height(TTnode * in);
 
 private:
 
