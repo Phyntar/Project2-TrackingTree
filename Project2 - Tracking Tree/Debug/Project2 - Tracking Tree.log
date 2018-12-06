@@ -1,2 +1,10 @@
 ﻿  Main.cpp
+c:\users\compu\desktop\project2-trackingtree\project2 - tracking tree\main.cpp(54): warning C4267: 'argument': conversion from 'size_t' to 'const _Elem', possible loss of data
+          with
+          [
+              _Elem=char
+          ]
+  TTnode.cpp
+  TrackingTree.cpp
+  Generating Code...
   Project2 - Tracking Tree.vcxproj -> C:\Users\Compu\Desktop\Project2-TrackingTree\Debug\Project2 - Tracking Tree.exe

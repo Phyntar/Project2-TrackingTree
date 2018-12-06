@@ -47,5 +47,5 @@ private:
 	vector<string> lHisth;
 	TTnode * leftChild;
 	TTnode * rightChild;
-	hash<string> hasher;
+	hash<string> hashTb;
 };

@@ -9,6 +9,7 @@ using std::cout;
 using std::hash;
 
 char* gen_random(const int len);
+string hasher(string in, hash<string> stHash);
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Constructor~~~~~
 
 TTnode::TTnode(string in)
@@ -17,7 +18,7 @@ TTnode::TTnode(string in)
 	rawEvent = in;
 	lHash = "null";
 	rHash = "null";
-	id = getParentID() + in;
+	id = hasher(getParentID() + in,hashTb);
 	id.resize(8);
 	leftChild = NULL;
 	rightChild = NULL;	

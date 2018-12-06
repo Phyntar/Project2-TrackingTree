@@ -14,46 +14,14 @@ int main()
 {
 	TrackingTree * treeMaster = new TrackingTree();
 
-	
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
 	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
 	treeMaster->getTree()->display();
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->getTree()->display();
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->getTree()->display();
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->getTree()->display();
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->getTree()->display();
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->getTree()->display();
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->getTree()->display();
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->getTree()->display();
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->getTree()->display();
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->getTree()->display();
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->getTree()->display();
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->getTree()->display();
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->getTree()->display();
-	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 	
 	
 	system("pause");
@@ -75,6 +43,18 @@ char* gen_random(const int len)
 	s[len] = 0;
 
 	return s;
+}
+
+string hasher(string in, hash<string> stHash)
+{
+	string out;
+
+	for (int i = 0; i < 8; i++)
+	{
+		out.push_back(stHash(in + static_cast<char>(i)));
+	}
+
+	return out;
 }
 
 
