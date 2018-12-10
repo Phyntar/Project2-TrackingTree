@@ -65,6 +65,11 @@ TTnode * TTnode::getRight()
 	return rightChild;
 }
 
+hash<string> TTnode::getHashTb()
+{
+	return hashTb;
+}
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Set Functions~~~~~
 
 void TTnode::setLeft(TTnode* in)
@@ -90,10 +95,12 @@ void TTnode::setRawEvent(string in)
 }
 void TTnode::setRhash(string in)
 {
+	addRhisth(rHash);
 	rHash = in;
 }
 void TTnode::setLhash(string in)
 {
+	addLhisth(lHash);
 	lHash = in;
 }
 void TTnode::addRhisth(string in)

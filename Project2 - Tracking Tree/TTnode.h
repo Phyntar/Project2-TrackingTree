@@ -21,6 +21,7 @@ public:
 	vector<string> getLHisth();
 	TTnode * getLeft();
 	TTnode * getRight();
+	hash<string> getHashTb();
 
 	void setLeft(TTnode* in);
 	void setRight(TTnode* in);

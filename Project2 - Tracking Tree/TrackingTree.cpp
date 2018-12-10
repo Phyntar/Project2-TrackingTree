@@ -3,6 +3,7 @@
 #include "TrackingTree.h"
 #include "TTnode.h"
 
+string hasher(string in, hash<string> stHash);
 TrackingTree::TrackingTree()
 {
 	tree = NULL;
@@ -103,4 +104,58 @@ int TrackingTree::height(TTnode * in)
 			return rheight + 1;
 		}
 	}
+}
+
+void TrackingTree::updateCrawl(int height)
+{
+	vector<TTnode*> curLevel = nodesAtH(tree,height);
+
+	for (int i = 0; i < curLevel.size(); i++)
+	{
+		if (curLevel.at(i)->getLHash() != hasher(curLevel.at(i)->getLeft()->getID() + curLevel.at(i)->getLeft()->getParentID() + curLevel.at(i)->getLeft()->getLHash() + curLevel.at(i)->getLeft()->getRHash(), curLevel.at(i)->getHashTb()))
+		{
+			curLevel.at(i)->setLhash(hasher(curLevel.at(i)->getLeft()->getID() + curLevel.at(i)->getLeft()->getParentID() + curLevel.at(i)->getLeft()->getLHash() + curLevel.at(i)->getLeft()->getRHash(), curLevel.at(i)->getHashTb()));
+		}
+
+		if (curLevel.at(i)->getRight() != NULL)
+		{
+			if (curLevel.at(i)->getRHash() != hasher(curLevel.at(i)->getRight()->getID() + curLevel.at(i)->getRight()->getParentID() + curLevel.at(i)->getRight()->getRHash() + curLevel.at(i)->getRight()->getRHash(), curLevel.at(i)->getHashTb()))
+			{
+				curLevel.at(i)->setRhash(hasher(curLevel.at(i)->getRight()->getID() + curLevel.at(i)->getRight()->getParentID() + curLevel.at(i)->getRight()->getRHash() + curLevel.at(i)->getRight()->getRHash(), curLevel.at(i)->getHashTb()));
+			}
+		}
+
+	}
+
+	if(height - 1 > 0)
+	{
+		updateCrawl(height - 1);
+	}
+	
+
+}
+
+vector<TTnode*> TrackingTree::nodesAtH(TTnode* curTree, int height) 
+{
+	vector<TTnode *> nodes;
+	if (height == 1)
+	{
+		if (curTree != NULL)
+		{
+			nodes.push_back(curTree);
+		}
+		return nodes;
+	}	
+	else
+	{
+		vector<TTnode *> left, right;
+		left = nodesAtH(curTree->getLeft(), height - 1);
+		right = nodesAtH(curTree->getRight(), height - 1);
+		nodes.reserve(left.size() + right.size()); // preallocate memory
+		nodes.insert(nodes.end(), left.begin(), left.end());
+		nodes.insert(nodes.end(), right.begin(), right.end());
+		return nodes;
+	}
+
+	return vector<TTnode*>();
 }

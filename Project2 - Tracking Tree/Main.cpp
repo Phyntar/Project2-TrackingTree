@@ -9,6 +9,7 @@ using std::hash;
 using std::cout;
 using std::cin;
 
+string hasher(string in, hash<string> stHash);
 
 int main()
 {
@@ -16,14 +17,11 @@ int main()
 
 	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
 	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
+	treeMaster->updateCrawl(treeMaster->height(treeMaster->getTree())-1);
+	
 	treeMaster->getTree()->display();
 	
-	
+
 	system("pause");
 	return 0;
 }
