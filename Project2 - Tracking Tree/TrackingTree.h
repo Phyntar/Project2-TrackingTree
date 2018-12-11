@@ -19,6 +19,9 @@ public:
 	int height(TTnode * in);
 	void updateCrawl(int height);
 	vector<TTnode*> nodesAtH(TTnode* curTree, int height);
+	void showNode(TTnode* inTree, string id);
+	void changeNode(TTnode* inTree, string id, string raw);
+
 
 private:
 

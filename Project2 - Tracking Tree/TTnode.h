@@ -11,7 +11,7 @@ class TTnode
 {
 public:
 
-	TTnode(string in);
+	TTnode(string raw);
 	string getID();
 	string getParentID();
 	string getRawEvent();
@@ -36,6 +36,9 @@ public:
 	void display();
 	void displayLeft(TTnode * subtree, std::string prefix);
 	void displayRight(TTnode * subtree, std::string prefix);
+
+	void displayRec();
+	void displayChildRec(TTnode * subtree);
 
 private:
 

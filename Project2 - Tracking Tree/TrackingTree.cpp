@@ -3,6 +3,10 @@
 #include "TrackingTree.h"
 #include "TTnode.h"
 
+#include <iostream>
+
+using std::cout;
+
 string hasher(string in, hash<string> stHash);
 TrackingTree::TrackingTree()
 {
@@ -29,11 +33,13 @@ int TrackingTree::insertNode(TTnode* cur,TTnode* in)
 	else if (cur->getLeft() == NULL)
 	{
 		cur->setLeft(in);
+		in->setParentID(cur->getID());
 		return 0;
 	}
 	else if (cur->getRight() == NULL)
 	{
 		cur->setRight(in);
+		in->setParentID(cur->getID());
 		return 0;
 	}
 	else
@@ -108,29 +114,32 @@ int TrackingTree::height(TTnode * in)
 
 void TrackingTree::updateCrawl(int height)
 {
-	vector<TTnode*> curLevel = nodesAtH(tree,height);
-
-	for (int i = 0; i < curLevel.size(); i++)
+	if (height > 0)
 	{
-		if (curLevel.at(i)->getLHash() != hasher(curLevel.at(i)->getLeft()->getID() + curLevel.at(i)->getLeft()->getParentID() + curLevel.at(i)->getLeft()->getLHash() + curLevel.at(i)->getLeft()->getRHash(), curLevel.at(i)->getHashTb()))
-		{
-			curLevel.at(i)->setLhash(hasher(curLevel.at(i)->getLeft()->getID() + curLevel.at(i)->getLeft()->getParentID() + curLevel.at(i)->getLeft()->getLHash() + curLevel.at(i)->getLeft()->getRHash(), curLevel.at(i)->getHashTb()));
-		}
+		vector<TTnode*> curLevel = nodesAtH(tree, height);
 
-		if (curLevel.at(i)->getRight() != NULL)
+		for (int i = 0; i < curLevel.size(); i++)
 		{
-			if (curLevel.at(i)->getRHash() != hasher(curLevel.at(i)->getRight()->getID() + curLevel.at(i)->getRight()->getParentID() + curLevel.at(i)->getRight()->getRHash() + curLevel.at(i)->getRight()->getRHash(), curLevel.at(i)->getHashTb()))
+			if (curLevel.at(i)->getLHash() != hasher(curLevel.at(i)->getLeft()->getID() + curLevel.at(i)->getLeft()->getParentID() + curLevel.at(i)->getLeft()->getLHash() + curLevel.at(i)->getLeft()->getRHash(), curLevel.at(i)->getHashTb()))
 			{
-				curLevel.at(i)->setRhash(hasher(curLevel.at(i)->getRight()->getID() + curLevel.at(i)->getRight()->getParentID() + curLevel.at(i)->getRight()->getRHash() + curLevel.at(i)->getRight()->getRHash(), curLevel.at(i)->getHashTb()));
+				curLevel.at(i)->setLhash(hasher(curLevel.at(i)->getLeft()->getID() + curLevel.at(i)->getLeft()->getParentID() + curLevel.at(i)->getLeft()->getLHash() + curLevel.at(i)->getLeft()->getRHash(), curLevel.at(i)->getHashTb()));
 			}
+
+			if (curLevel.at(i)->getRight() != NULL)
+			{
+				if (curLevel.at(i)->getRHash() != hasher(curLevel.at(i)->getRight()->getID() + curLevel.at(i)->getRight()->getParentID() + curLevel.at(i)->getRight()->getRHash() + curLevel.at(i)->getRight()->getRHash(), curLevel.at(i)->getHashTb()))
+				{
+					curLevel.at(i)->setRhash(hasher(curLevel.at(i)->getRight()->getID() + curLevel.at(i)->getRight()->getParentID() + curLevel.at(i)->getRight()->getRHash() + curLevel.at(i)->getRight()->getRHash(), curLevel.at(i)->getHashTb()));
+				}
+			}
+
 		}
 
-	}
 
-	if(height - 1 > 0)
-	{
 		updateCrawl(height - 1);
 	}
+	
+	
 	
 
 }
@@ -158,4 +167,45 @@ vector<TTnode*> TrackingTree::nodesAtH(TTnode* curTree, int height)
 	}
 
 	return vector<TTnode*>();
+}
+
+void TrackingTree::showNode(TTnode* inTree, string id)
+{
+	if (inTree->getID() == id)
+	{
+		cout << "ID: " << inTree->getID();
+		cout << "ParentID: " << inTree->getParentID();
+		cout << "RawEvent: " << inTree->getRawEvent();
+		cout << "Left Hash: " << inTree->getLHash();
+		cout << "Right Hash: " << inTree->getRHash();
+		cout << "Left History: ";
+		for (int i = 0; i < inTree->getLHisth().size(); i++)
+		{
+			cout << inTree->getLHisth().at(i) << ", ";
+		}
+		cout << "Right History: ";
+		for (int i = 0; i < inTree->getRHisth().size(); i++)
+		{
+			cout << inTree->getRHisth().at(i) << ", ";
+		}
+	}
+	else
+	{
+		showNode(inTree->getLeft(), id);
+		showNode(inTree->getRight(), id);
+	}
+
+}
+
+void TrackingTree::changeNode(TTnode * inTree, string id, string raw)
+{
+	if (inTree->getID() == id)
+	{
+		inTree->setRawEvent(raw);
+	}
+	else
+	{
+		changeNode(inTree->getLeft(), id, raw);
+		changeNode(inTree->getRight(), id, raw);
+	}
 }

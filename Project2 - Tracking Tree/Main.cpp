@@ -14,13 +14,51 @@ string hasher(string in, hash<string> stHash);
 int main()
 {
 	TrackingTree * treeMaster = new TrackingTree();
+	
+	/*
+	treeMaster->insertNode(treeMaster->getTree(), new TTnode("cunt"));
+	treeMaster->getTree()->addLhisth("null");
+	*/
 
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("10"));
-	treeMaster->updateCrawl(treeMaster->height(treeMaster->getTree())-1);
-	
-	treeMaster->getTree()->display();
-	
+	string input, input2;
+	vector<string> raw;
+	bool stop = false;
+	while (stop == false)
+	{
+		cout << "\n\nPlease type a task: ";
+		cin >> input;
+		if (input._Equal("add"))
+		{
+			cin >> input;
+			treeMaster->insertNode(treeMaster->getTree(), new TTnode(input));
+			treeMaster->updateCrawl(treeMaster->height(treeMaster->getTree()) - 1);
+		}
+		else if (input._Equal("display"))
+		{
+			treeMaster->getTree()->display();
+			treeMaster->getTree()->displayRec();
+		}
+		else if (input._Equal("update"))
+		{
+			cin >> input;
+			cin >> input2;
+			treeMaster->changeNode(treeMaster->getTree(), input, input2);
+			treeMaster->updateCrawl(treeMaster->height(treeMaster->getTree()) - 1);
+		}
+		else if (input._Equal("search"))
+		{
+			cin >> input;
+			treeMaster->showNode(treeMaster->getTree(), input);
+		}
+		else if (input._Equal("stop"))
+		{
+			stop = true;
+		}
+		else
+		{
+			cout << " incorrect input. valid inputs are: add, display, update, search, stop.";
+		}
+	}
 
 	system("pause");
 	return 0;
@@ -51,7 +89,7 @@ string hasher(string in, hash<string> stHash)
 	{
 		out.push_back(stHash(in + static_cast<char>(i)));
 	}
-
+	out.resize(8);
 	return out;
 }
 

@@ -12,13 +12,13 @@ char* gen_random(const int len);
 string hasher(string in, hash<string> stHash);
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Constructor~~~~~
 
-TTnode::TTnode(string in)
+TTnode::TTnode(string raw)
 {
 	parentID = gen_random(8);
-	rawEvent = in;
+	rawEvent = raw;
 	lHash = "null";
 	rHash = "null";
-	id = hasher(getParentID() + in,hashTb);
+	id = hasher(getParentID() + raw,hashTb);
 	id.resize(8);
 	leftChild = NULL;
 	rightChild = NULL;	
@@ -156,3 +156,24 @@ void TTnode::displayRight(TTnode * subtree, std::string prefix)
 		displayRight(subtree->getRight(), prefix + "       ");
 	}
 }
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Display Record Functions~~~~~
+
+void TTnode::displayRec()
+{
+	cout << getRawEvent()<<", ";
+	displayChildRec(getLeft());
+	displayChildRec(getRight());
+}
+
+void TTnode::displayChildRec(TTnode * subtree)
+{
+	if (subtree != NULL)
+	{
+		cout << subtree->getRawEvent() << ", ";
+		displayChildRec(getLeft());
+		displayChildRec(getRight());
+	}
+	
+}
+
