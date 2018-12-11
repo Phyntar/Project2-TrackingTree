@@ -174,16 +174,16 @@ void TrackingTree::showNode(TTnode* inTree, string id)
 	if (inTree->getID() == id)
 	{
 		cout << "ID: " << inTree->getID();
-		cout << "ParentID: " << inTree->getParentID();
-		cout << "RawEvent: " << inTree->getRawEvent();
-		cout << "Left Hash: " << inTree->getLHash();
-		cout << "Right Hash: " << inTree->getRHash();
-		cout << "Left History: ";
+		cout << "\nParentID: " << inTree->getParentID();
+		cout << "\nRawEvent: " << inTree->getRawEvent();
+		cout << "\nLeft Hash: " << inTree->getLHash();
+		cout << "\nRight Hash: " << inTree->getRHash();
+		cout << "\nLeft History: ";
 		for (int i = 0; i < inTree->getLHisth().size(); i++)
 		{
 			cout << inTree->getLHisth().at(i) << ", ";
 		}
-		cout << "Right History: ";
+		cout << "\nRight History: ";
 		for (int i = 0; i < inTree->getRHisth().size(); i++)
 		{
 			cout << inTree->getRHisth().at(i) << ", ";
