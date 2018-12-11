@@ -14,7 +14,7 @@ public:
 
 	void setTree(TTnode* in);
 
-	int insertNode(TTnode* cur,TTnode* in);
+	int insertNode(TTnode* cur,string in);
 	bool isFull(TTnode* in);
 	int height(TTnode * in);
 	void updateCrawl(int height);

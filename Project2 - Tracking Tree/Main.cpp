@@ -14,14 +14,8 @@ string hasher(string in, hash<string> stHash);
 int main()
 {
 	TrackingTree * treeMaster = new TrackingTree();
-	
-	/*
-	treeMaster->insertNode(treeMaster->getTree(), new TTnode("cunt"));
-	treeMaster->getTree()->addLhisth("null");
-	*/
 
 	string input, input2;
-	vector<string> raw;
 	bool stop = false;
 	while (stop == false)
 	{
@@ -30,7 +24,7 @@ int main()
 		if (input._Equal("add"))
 		{
 			cin >> input;
-			treeMaster->insertNode(treeMaster->getTree(), new TTnode(input));
+			treeMaster->insertNode(treeMaster->getTree(),input);
 			treeMaster->updateCrawl(treeMaster->height(treeMaster->getTree()) - 1);
 		}
 		else if (input._Equal("display"))
@@ -66,7 +60,7 @@ int main()
 
 char* gen_random(const int len)
 {
-	char* s = new char;
+	char* s = new char[8];
 	static const char alphanum[] =
 		"0123456789"
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -84,12 +78,14 @@ char* gen_random(const int len)
 string hasher(string in, hash<string> stHash)
 {
 	string out;
-
+	
 	for (int i = 0; i < 8; i++)
 	{
 		out.push_back(stHash(in + static_cast<char>(i)));
 	}
 	out.resize(8);
+	
+	
 	return out;
 }
 

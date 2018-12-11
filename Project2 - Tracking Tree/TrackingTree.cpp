@@ -23,23 +23,23 @@ void TrackingTree::setTree(TTnode* in)
 	tree = in;
 }
 
-int TrackingTree::insertNode(TTnode* cur,TTnode* in)
+int TrackingTree::insertNode(TTnode* cur,string in)
 {
 	if (cur == NULL)
 	{
-		setTree(in);
+		setTree(new TTnode(in));
 		return 0;
 	}
 	else if (cur->getLeft() == NULL)
 	{
-		cur->setLeft(in);
-		in->setParentID(cur->getID());
+		cur->setLeft(new TTnode(in));
+		cur->getLeft()->setParentID(cur->getID());
 		return 0;
 	}
 	else if (cur->getRight() == NULL)
 	{
-		cur->setRight(in);
-		in->setParentID(cur->getID());
+		cur->setRight(new TTnode(in));
+		cur->getRight()->setParentID(cur->getID());
 		return 0;
 	}
 	else
@@ -114,16 +114,20 @@ int TrackingTree::height(TTnode * in)
 
 void TrackingTree::updateCrawl(int height)
 {
+
 	if (height > 0)
 	{
 		vector<TTnode*> curLevel = nodesAtH(tree, height);
 
 		for (int i = 0; i < curLevel.size(); i++)
 		{
-			if (curLevel.at(i)->getLHash() != hasher(curLevel.at(i)->getLeft()->getID() + curLevel.at(i)->getLeft()->getParentID() + curLevel.at(i)->getLeft()->getLHash() + curLevel.at(i)->getLeft()->getRHash(), curLevel.at(i)->getHashTb()))
+			if (curLevel.at(i)->getLeft() != NULL)
 			{
-				curLevel.at(i)->setLhash(hasher(curLevel.at(i)->getLeft()->getID() + curLevel.at(i)->getLeft()->getParentID() + curLevel.at(i)->getLeft()->getLHash() + curLevel.at(i)->getLeft()->getRHash(), curLevel.at(i)->getHashTb()));
-			}
+				if (curLevel.at(i)->getLHash() != hasher(curLevel.at(i)->getLeft()->getID() + curLevel.at(i)->getLeft()->getParentID() + curLevel.at(i)->getLeft()->getLHash() + curLevel.at(i)->getLeft()->getRHash(), curLevel.at(i)->getHashTb()))
+				{
+					curLevel.at(i)->setLhash(hasher(curLevel.at(i)->getLeft()->getID() + curLevel.at(i)->getLeft()->getParentID() + curLevel.at(i)->getLeft()->getLHash() + curLevel.at(i)->getLeft()->getRHash(), curLevel.at(i)->getHashTb()));
+				}
+			}			
 
 			if (curLevel.at(i)->getRight() != NULL)
 			{

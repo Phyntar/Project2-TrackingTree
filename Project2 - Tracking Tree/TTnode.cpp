@@ -171,8 +171,8 @@ void TTnode::displayChildRec(TTnode * subtree)
 	if (subtree != NULL)
 	{
 		cout << subtree->getRawEvent() << ", ";
-		displayChildRec(getLeft());
-		displayChildRec(getRight());
+		displayChildRec(subtree->getLeft());
+		displayChildRec(subtree->getRight());
 	}
 	
 }
