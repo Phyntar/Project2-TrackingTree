@@ -195,8 +195,15 @@ void TrackingTree::showNode(TTnode* inTree, string id)
 	}
 	else
 	{
-		showNode(inTree->getLeft(), id);
-		showNode(inTree->getRight(), id);
+		if (inTree->getLeft() != NULL)
+		{
+			showNode(inTree->getLeft(), id);
+		}
+		if (inTree->getRight() != NULL)
+		{
+			showNode(inTree->getRight(), id);
+		}
+		
 	}
 
 }
@@ -209,7 +216,13 @@ void TrackingTree::changeNode(TTnode * inTree, string id, string raw)
 	}
 	else
 	{
-		changeNode(inTree->getLeft(), id, raw);
-		changeNode(inTree->getRight(), id, raw);
+		if (inTree->getLeft() != NULL)
+		{
+			changeNode(inTree->getLeft(), id, raw);
+		}
+		if (inTree->getRight() != NULL)
+		{
+			changeNode(inTree->getRight(), id, raw);
+		}		
 	}
 }

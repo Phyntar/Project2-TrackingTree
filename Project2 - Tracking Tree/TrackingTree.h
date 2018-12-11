@@ -12,15 +12,15 @@ public:
 
 	TTnode* getTree();
 
-	void setTree(TTnode* in);
+	void setTree(TTnode* in);								//sets tree variable
 
-	int insertNode(TTnode* cur,string in);
-	bool isFull(TTnode* in);
-	int height(TTnode * in);
-	void updateCrawl(int height);
-	vector<TTnode*> nodesAtH(TTnode* curTree, int height);
-	void showNode(TTnode* inTree, string id);
-	void changeNode(TTnode* inTree, string id, string raw);
+	int insertNode(TTnode* cur,string in);					//finds where to insert a new node then inserts it
+	bool isFull(TTnode* in);								//tests if a tree is a full tree
+	int height(TTnode * in);								//returns the height of a tree
+	void updateCrawl(int height);							//crawls through entire tree updating hash values
+	vector<TTnode*> nodesAtH(TTnode* curTree, int height);	//returns a vector of nodes at height h for the updatecrawl function
+	void showNode(TTnode* inTree, string id);				//searches for a node then prints it
+	void changeNode(TTnode* inTree, string id, string raw);	//searches for a node then changes raw
 
 
 private:

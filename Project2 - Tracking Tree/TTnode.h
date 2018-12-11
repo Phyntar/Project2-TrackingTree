@@ -11,8 +11,8 @@ class TTnode
 {
 public:
 
-	TTnode(string raw);
-	string getID();
+	TTnode(string raw);						//constructor
+	string getID();							//get functions
 	string getParentID();
 	string getRawEvent();
 	string getRHash();
@@ -23,7 +23,7 @@ public:
 	TTnode * getRight();
 	hash<string> getHashTb();
 
-	void setLeft(TTnode* in);
+	void setLeft(TTnode* in);				//set functions
 	void setRight(TTnode* in);
 	void setID(string in);
 	void setParentID(string in);
@@ -33,11 +33,11 @@ public:
 	void addRhisth(string in);
 	void addLhisth(string in);
 
-	void display();
+	void display();							//displays tree structure using ID
 	void displayLeft(TTnode * subtree, std::string prefix);
 	void displayRight(TTnode * subtree, std::string prefix);
 
-	void displayRec();
+	void displayRec();						//prints out a list of the raw events
 	void displayChildRec(TTnode * subtree);
 
 private:

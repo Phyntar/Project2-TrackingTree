@@ -19,7 +19,6 @@ TTnode::TTnode(string raw)
 	lHash = "null";
 	rHash = "null";
 	id = hasher(getParentID() + raw,hashTb);
-	id.resize(8);
 	leftChild = NULL;
 	rightChild = NULL;	
 

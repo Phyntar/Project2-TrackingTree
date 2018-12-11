@@ -58,7 +58,7 @@ int main()
 	return 0;
 }
 
-char* gen_random(const int len)
+char* gen_random(const int len)				//generates a random string of length 8 (now that it isnt garbage)
 {
 	char* s = new char[8];
 	static const char alphanum[] =
@@ -75,7 +75,7 @@ char* gen_random(const int len)
 	return s;
 }
 
-string hasher(string in, hash<string> stHash)
+string hasher(string in, hash<string> stHash)				//creates a hash of length 8
 {
 	string out;
 	
@@ -88,70 +88,3 @@ string hasher(string in, hash<string> stHash)
 	
 	return out;
 }
-
-
-/*
-
-//insert function below
-//https://www.geeksforgeeks.org/insertion-in-a-binary-tree-in-level-order/
-
-
-struct Node 
-
-{
-	int key;
-	struct Node* left, *right;
-};
-
-
-struct Node* newNode(int key)
-{
-	struct Node* temp = new Node;
-	temp->key = key;
-	temp->left = temp->right = NULL;
-	return temp;
-};
-
-// Inorder traversal of a binary tree
-void inorder(struct Node* temp)
-{
-	if (!temp)
-		return;
-
-	inorder(temp->left);
-	cout << temp->key << " ";
-	inorder(temp->right);
-}
-
-//function to insert element in binary tree
-void insert(struct Node* temp, int key)
-{
-	queue<struct Node*> q;
-	q.push(temp);
-
-	// Do level order traversal until we find 
-	// an empty place.  
-	while (!q.empty()) {
-		struct Node* temp = q.front();
-		q.pop();
-
-		if (!temp->left) {
-			temp->left = newNode(key);
-			break;
-		}
-		else
-			q.push(temp->left);
-
-		if (!temp->right) {
-			temp->right = newNode(key);
-			break;
-		}
-		else
-			q.push(temp->right);
-	}
-
-}
-
-//https://www.geeksforgeeks.org/insertion-in-a-binary-tree-in-level-order/
-
-*/
